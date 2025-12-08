@@ -68,9 +68,10 @@ pagemap은 Linux 커널이 “각 프로세스의 가상주소(VA)가 어떤 물
 
 실행 순서
 *** 모든 실험은 AutoNUMA, THP 등 Application 동작과 상관없이 Page table을 변경시킬 수 있는 OS 옵션 끄고 해야함. ***
-
-1. dataai 서버의 gwangin/KVStore/pt_capture로 이동
-2. 살행 PORT=6380 ENABLE_COW=0 RUN_FOR_SECS=600 THREADS=32 CAP_INTERVAL=5 ./run_two_phase.sh
+```
+cd ~/KVStore/pt_capture
+PORT=6380 ENABLE_COW=0 RUN_FOR_SECS=600 THREADS=32 CAP_INTERVAL=5 ./run_two_phase.sh
+```
 
 * 실험 완료 후 생성되는 결과
    * snapshots/pt_*.csv.gz # pagemap 스냅샷들
