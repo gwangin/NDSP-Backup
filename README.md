@@ -89,8 +89,13 @@ logs/capture.log # 캡처 과정 실시간 로그
 * spark 실험
     * 실험 방법
     * cd ~/spark/olap_snapshot_pt
+    * cd ~/spark/olap_snapshot_pt
+    * source env.sh
+    * echo "$SPARK_HOME"
+    * which spark-submit
     * ./start_olap_with_capture.sh 8g 50 5
 
+    log/pt_changes.log 확인
 
 
 * 백업파일 설명
