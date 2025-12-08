@@ -32,29 +32,26 @@
 
 
 
-CODE 백업
+## CODE 백업
 
+# Page table이 변하는 Application을 찾기.
 
-Page table이 변하는 Application을 찾는 코드.
-
-Page table이 변하는 application 찾기
-
-Page table이 변하는 application을 찾기 위해서 Pagemap snapshot을 찍어 각 스냅샷끼리 비교하는 방법을 사용함.
+/*Page table이 변하는 application을 찾기 위해서 Pagemap snapshot을 찍어 각 스냅샷끼리 비교하는 방법을 사용함.
 /proc/<pid>/pagemap
 pagemap은 Linux 커널이 “각 프로세스의 가상주소(VA)가 어떤 물리 페이지(PFN)에 매핑돼 있는지”를 사용자 공간에 제공하는 인터페이스
 
 각 어플리케이션의 PTE변화를 측정하는 실험 방법은 GPT를 활용하여 만들어도 잘 만들어줌
-5초마다 pagemap snapshot을 기록하고, 기록할 때마다 직전 스냅샷과 비교하여
+5초마다 pagemap snapshot을 기록하고, 기록할 때마다 직전 스냅샷과 비교하여 아래 3가지를 기록해야함.
 
 1. 새로 생긴 PTE,
 2. VPN은 그대로인데 PFN이 변한 PTE,
 3. 제거된 PTE
-
-이 세가지를 기록할 수 있도록 요청하면 됨.
 만약 백업된 코드와 스크립트가 이해 안되면 다시 만드는게 편할 수도 있음.
 
-백업 파일 설명
+*/
 
+# 백업 파일 설명
+**redis 실험**
 * snap_pagetable.py
     * /proc/<pid>/pagemap 읽어서 vpn,status,pfn 등의 PTE정보를 CSV로 저장 → Snapshot을 만듦
 * capture_loop.sh
@@ -70,47 +67,35 @@ pagemap은 Linux 커널이 “각 프로세스의 가상주소(VA)가 어떤 물
 
 
 실행 순서
-
-* AutoNUMA, THP 등 Application 동작과 상관없이 Page table을 변경시킬 수 있는 OS 옵션 끄기
-
-redis 실험
+*** 모든 실험은 AutoNUMA, THP 등 Application 동작과 상관없이 Page table을 변경시킬 수 있는 OS 옵션 끄고 해야함. ***
 
 1. dataai 서버의 gwangin/KVStore/pt_capture로 이동
 2. 살행 PORT=6380 ENABLE_COW=0 RUN_FOR_SECS=600 THREADS=32 CAP_INTERVAL=5 ./run_two_phase.sh
 
-실험 완료 후 생성되는 결과
-snapshots/pt_*.csv.gz # pagemap 스냅샷들
-diffs/stream_summary.csv # 5초 단위 added/changed/removed/RSS 요약
-diffs/stream_totals.txt # 전체 누적 PT 변화량
-logs/capture.log # 캡처 과정 실시간 로그
-* spark 실험
-    * 실험 방법
+* 실험 완료 후 생성되는 결과
+   * snapshots/pt_*.csv.gz # pagemap 스냅샷들
+   * diffs/stream_summary.csv # 5초 단위 added/changed/removed/RSS 요약
+   * diffs/stream_totals.txt # 전체 누적 PT 변화량
+   * logs/capture.log # 캡처 과정 실시간 로그
+
+## spark 실험
+ * 실험 방법
     * cd ~/spark/olap_snapshot_pt
     * cd ~/spark/olap_snapshot_pt
     * source env.sh
     * echo "$SPARK_HOME"
     * which spark-submit
     * ./start_olap_with_capture.sh 8g 50 5
+    * 종료 후 log/pt_changes.log 확인
 
-    log/pt_changes.log 확인
 
-
-* 백업파일 설명
-
-🔹 최상위 디렉토리
-
+# 백업파일 설명
 * env.sh
     * Spark 실행환경 설정(SPARK_HOME 찾기)
 * olap_app.py
     * Spark OLAP workload 실행 + PID 기록
 * start_olap_ with_ capture.sh
     * Spark 실행 → JVM PID 획득 → capture 루프 시작
-
-
-
-
-🔹 bin/ 디렉토리
-
 * snap_pagetable.py
     * 프로세스 pagemap 읽어 스냅샷 생성
 * diff_pagetable.p
