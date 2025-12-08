@@ -80,15 +80,14 @@ pagemap은 Linux 커널이 “각 프로세스의 가상주소(VA)가 어떤 물
 
 **spark 실험**
  * 실험 방법
-   ''''''
-   ```cd ~/spark/olap_snapshot_pt```
-    * cd ~/spark/olap_snapshot_pt
-    * cd ~/spark/olap_snapshot_pt
-    * source env.sh
-    * echo "$SPARK_HOME"
-    * which spark-submit
-    * ./start_olap_with_capture.sh 8g 50 5
-    * 종료 후 log/pt_changes.log 확인
+   ```cd ~/spark/olap_snapshot_pt
+   source env.sh
+echo "$SPARK_HOME"
+   which spark-submit
+   ./start_olap_with_capture.sh 8g 50 5
+   종료 후 log/pt_changes.log 확인
+   ```
+   
 
 
 ### 백업파일 설명
