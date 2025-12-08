@@ -5,7 +5,8 @@
 * CXL 자체에 대한 공부 (이건 꾸준히 하기)
     * spec 최신 버전 다운로드 받고 2, 3, 7, Appendix을 필수로 읽기.
     * dax가 무엇인지 이해하기 https://docs.kernel.org/filesystems/dax.html
-* 기존 GPU, 가속기도 CPU와 가속기의 core가 virtual address를 공유,통합 하려는 시도는 있어왔다. ex) SVM, UVM 그렇다면 기존 방식과 CXL memory에서의 NDP core는 무엇이 다른지 이해해야함.
+* 기존 GPU, 가속기도 CPU와 가속기의 core가 virtual address를 공유,통합 하려는 시도는 있어왔다.
+* ex) SVM, UVM 그렇다면 기존 방식과 CXL memory에서의 NDP core는 무엇이 다른지 이해해야함.
     * SVA/SVM  Shared Virtual Address와 Shared Virtual Memory
         * Shared Virtual Memory: Its Design and Performance Implications for Diverse Applications- https://arxiv.org/pdf/2405.06811
         * In-Depth Analyses of Unified Virtual Memory System for GPU Accelerated Computing
