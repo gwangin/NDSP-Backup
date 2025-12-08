@@ -1,4 +1,4 @@
-### 공부해야할 것 List
+# 공부해야할 것 List
 
 **여기 제시된 논문,링크 이외에도 스스로 자료를 찾아서 해당 개념에 대해 이해해야함.**
 
@@ -34,7 +34,7 @@
 
 ## CODE 백업
 
-# Page table이 변하는 Application을 찾기.
+### Page table이 변하는 Application을 찾기.
 
 /*Page table이 변하는 application을 찾기 위해서 Pagemap snapshot을 찍어 각 스냅샷끼리 비교하는 방법을 사용함.
 /proc/<pid>/pagemap
@@ -50,7 +50,7 @@ pagemap은 Linux 커널이 “각 프로세스의 가상주소(VA)가 어떤 물
 
 */
 
-# 백업 파일 설명
+### 백업 파일 설명
 **redis 실험**
 * snap_pagetable.py
     * /proc/<pid>/pagemap 읽어서 vpn,status,pfn 등의 PTE정보를 CSV로 저장 → Snapshot을 만듦
@@ -89,7 +89,7 @@ pagemap은 Linux 커널이 “각 프로세스의 가상주소(VA)가 어떤 물
     * 종료 후 log/pt_changes.log 확인
 
 
-# 백업파일 설명
+### 백업파일 설명
 * env.sh
     * Spark 실행환경 설정(SPARK_HOME 찾기)
 * olap_app.py
