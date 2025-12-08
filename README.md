@@ -86,37 +86,35 @@ snapshots/pt_*.csv.gz # pagemap 스냅샷들
 diffs/stream_summary.csv # 5초 단위 added/changed/removed/RSS 요약
 diffs/stream_totals.txt # 전체 누적 PT 변화량
 logs/capture.log # 캡처 과정 실시간 로그
-
-spark 실험
-- 실험 방법
-cd ~/spark/olap_snapshot_pt
-./start_olap_with_capture.sh 8g 50 5
-
+* spark 실험
+    * 실험 방법
+    * cd ~/spark/olap_snapshot_pt
+    * ./start_olap_with_capture.sh 8g 50 5
 
 
-- 백업파일 설명
 
-최상위 디렉토리
+* 백업파일 설명
 
-env.sh
-Spark 실행환경 설정(SPARK_HOME 찾기)
+🔹 최상위 디렉토리
 
-olap_app.py
-Spark OLAP workload 실행 + PID 기록
+* env.sh
+    * Spark 실행환경 설정(SPARK_HOME 찾기)
+* olap_app.py
+    * Spark OLAP workload 실행 + PID 기록
+* start_olap_ with_ capture.sh
+    * Spark 실행 → JVM PID 획득 → capture 루프 시작
 
-start_olap_with_capture.sh
-Spark 실행 → JVM PID 획득 → capture 루프 시작
 
-bin/ 디렉토리
 
-snap_pagetable.py
-프로세스 pagemap 읽어 스냅샷 생성
 
-diff_pagetable.py
-스냅샷 간 added/changed/removed 계산
+🔹 bin/ 디렉토리
 
-append_change_log.py
-diff 결과 + RSS 값을 로그 파일에 한 줄 기록
+* snap_pagetable.py
+    * 프로세스 pagemap 읽어 스냅샷 생성
+* diff_pagetable.p
+    * 스냅샷 간 added/changed/removed 계산
+* append_change_ log.py
+    * diff 결과 + RSS 값을 로그 파일에 한 줄 기록
+* capture_ loop.sh
+    * PID 살아있는 동안 주기적으로 스냅샷 + diff 기록
 
-capture_loop.sh
-PID 살아있는 동안 주기적으로 스냅샷 + diff 기록
