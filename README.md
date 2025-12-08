@@ -64,7 +64,8 @@ pagemap은 Linux 커널이 “각 프로세스의 가상주소(VA)가 어떤 물
 
 
 * 실험 방법
-***모든 실험은 AutoNUMA, THP 등 Application 동작과 상관없이 Page table을 변경시킬 수 있는 OS 옵션 끄고 해야함.***
+  
+***모든 실험은 Application 동작과 상관없이 Page table을 변경시킬 수 있는 OS 옵션안 AutoNUMA, THP 등을  끄고 해야함.***
 ```
 cd ~/KVStore/pt_capture
 PORT=6380 ENABLE_COW=0 RUN_FOR_SECS=600 THREADS=32 CAP_INTERVAL=5 ./run_two_phase.sh
@@ -96,7 +97,8 @@ PORT=6380 ENABLE_COW=0 RUN_FOR_SECS=600 THREADS=32 CAP_INTERVAL=5 ./run_two_phas
       
  * 실험 방법
    
-***모든 실험은 AutoNUMA, THP 등 Application 동작과 상관없이 Page table을 변경시킬 수 있는 OS 옵션 끄고 해야함.***
+
+***모든 실험은 Application 동작과 상관없이 Page table을 변경시킬 수 있는 OS 옵션안 AutoNUMA, THP 등을  끄고 해야함.***
 
    ```cd ~/spark/olap_snapshot_pt
    source env.sh
