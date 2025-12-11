@@ -1,3 +1,7 @@
+README는 크게 3가지 설명을 담고 있다.
+1. 사전 공부 목록
+2. Motivation: redis, Spark에서 page table 변화 관측
+3. Simulator 동작과 NDSP 구현
 
 # 사전 공부 목록
 
