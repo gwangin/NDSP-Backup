@@ -45,7 +45,7 @@ README는 크게 3가지 설명을 담고 있다.
    * 정리할 것:
 
      1. CPU와 GPU가 **어떤 수준까지 VA를 공유**하는지
-     2. page fault 경로에 **어떤 하드웨어/소프트웨어가 개입**하는지
+     2. page fault 경로에 **어떤 하드웨어/소프트웨어가 동작**하는지
      3. migration / coherence 정책이 NDP 와 어떤 점에서 다른지
 
 2. **UVM (Unified Virtual Memory, NVIDIA 계열)**
@@ -73,7 +73,7 @@ README는 크게 3가지 설명을 담고 있다.
      * *rIOMMU: Efficient IOMMU for I/O Devices that Employ Ring Buffers*
    * 정리할 것:
 
-     1. IOMMU 가 **device 입장에서의 MMU**라는 점
+     1. IOMMU가 무엇인지
      2. DMA 요청이 IOMMU를 어떻게 거쳐서 PA로 변환되는지
      3. page fault 시 어떤 경로로 **host OS가介入**하는지
 
