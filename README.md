@@ -121,6 +121,7 @@ README는 크게 3가지 설명을 담고 있다.
 * Linux는 `/proc/<pid>/pagemap` 을 통해
   “**프로세스의 VA가 어느 PFN에 매핑돼 있는지**”를 사용자 공간에서 읽을 수 있게 해준다.
 * 목표는 특정 application의 동작 중에 **page table(PTE) 가 얼마나 자주, 어떻게 변하는지**를 측정하는 것.
+* 이때 현재 실험방법은 정확한 시각의 pagemap을 스냅샷하는것이 아니다. page table은 변화하므로 snapshot을 기록하는 동안 변할 수 있다. 하지만 이 수준으로도 page table이 변했다는 증거로 사용할 수 있다.
 
 ### 1.2 snapshot 비교에서 보고 싶은 것
 
