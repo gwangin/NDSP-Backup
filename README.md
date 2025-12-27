@@ -75,7 +75,7 @@ README는 크게 3가지 설명을 담고 있다.
 
      1. IOMMU가 무엇인지
      2. DMA 요청이 IOMMU를 어떻게 거쳐서 PA로 변환되는지
-     3. page fault 시 어떤 경로로 **host OS가介入**하는지
+     3. page fault 시 어떤 경로로 **host OS가 개입**하는지
 
 2. **ATS (Address Translation Service) / PRI (Page Request Interface)**
 
